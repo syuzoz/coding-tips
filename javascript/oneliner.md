@@ -18,3 +18,16 @@ average([10, 15, 24, 32, 55]);
 
 // 27.2
 ```
+
+### URLからパラメータークエリを取得
+
+```
+const getParameters = (URL) => {
+  const query = JSON.parse('{"' + decodeURI(URL.split("?")[1]).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') +'"}');
+  return JSON.stringify(query);
+}
+
+getParameters("https://www.google.com/search?q=hoge&hl=ja")
+
+// {"q":"hoge","hl":"ja"}
+```
